@@ -6,3 +6,32 @@
 p{
   color:aqua;  
 }
+
+h1{
+  color: #001B2E;
+  font-family: 'Monaco', Courier, monospace;
+  text-align: center;
+}
+
+h5{
+  color: #FF8C42;
+  text-align: center;
+  font-family: 'Monaco', Courier, monospace;
+}
+
+p{
+  color: #294C60;
+  text-align: center;
+  font-family: 'Monaco', Courier, monospace;
+}
+
+table{
+  align-items: center;
+}
+td{
+  align-items: center;
+}
+button{
+  align-self: center;
+  text-align: center;
+}
