@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sample</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCC8LQ45x3gQKX52PnGFe5ehs7oqlesh4&callback=initMap&loading=async&libraries=places"></script>
+        <script src="test.js"></script>
+    </head>
+    <body onload="initMap()">
+        <div class="container">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="source Location" id="source">
+                
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="destinaiton Location" id="dest">
+
+                
+            </div>
+            <button onclick="calcRoute()" class="btn btn-primary">Get</button>
+            <div id="map" style="height: 50vh;"></div>
+            <div class = "container">
+                <h4>By car</h4>
+                <p>Time <span id ="CarTime"></span></p>
+            </div>
+        </div>
+        
+        
+    </body>
+    
+</html>
