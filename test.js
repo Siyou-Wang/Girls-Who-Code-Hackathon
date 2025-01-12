@@ -70,9 +70,17 @@ function calcRoute(){
                 totalTime += bestRoute.legs[i].duration.text;
             }
             document.getElementById("CarTime").innerHTML = totalTime
-            console.log(totalDistance)
 
-            var gallonSave = totalDistance * 25.4
+            //round to 0.0
+            totalDistance = totalDistance/1609.34 
+            var tempTotal = totalDistance*10
+            tempTotal = Math.round(tempTotal)
+            tempTotal = tempTotal/10
+            totalDistance = tempTotal
+
+            localStorage.setItem("addedMiles",totalDistance)
+
+            var gallonSave = Math.round(totalDistance * 25.4)
             var carbonSave = totalDistance * 20
 
             document.getElementById("gallonsSaved").innerHTML = gallonSave

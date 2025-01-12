@@ -1,5 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyB79YeHcsM6QGu5v4IR5fm4cJtGcmqzB5w",
@@ -14,10 +15,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const email = document.getElementById("email").value;
-const password = document.getElementById("password").value;
 const loginBT = document.getElementById("loginBTN")
 const signUpBT = document.getElementById("signUpBTN")
+
 
 // function loginFunc (e) {
 //     e.preventDefault()
@@ -35,7 +35,12 @@ signUpBT.addEventListener("click", function (event) {
             // Signed up 
             const user = userCredential.user;
             // ...
-            alert("signed up")
+
+            const db = getFirestore()
+            const docRef = doc(db, "users", user.uid)
+            setDoc(docRef, {id:user.uid, email:email, total:0})
+
+            alert("You have signed up. Please log in.");
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -45,3 +50,29 @@ signUpBT.addEventListener("click", function (event) {
         });
 
 })
+
+loginBT.addEventListener("click", function (event) {
+    event.preventDefault()
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            
+            alert("You have logged in");
+            localStorage.setItem("loggedInUserID",user.uid)
+            localStorage.setItem("addedMiles",0)
+            
+            window.location.href= "second.html";
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorCode)
+        });
+})
+
+
