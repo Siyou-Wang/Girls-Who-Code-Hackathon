@@ -2,11 +2,13 @@
 <html>
     <head>
         <title>Sample</title>
+        
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCC8LQ45x3gQKX52PnGFe5ehs7oqlesh4&callback=initMap&loading=async&libraries=places"></script>
         <script src="test.js"></script>
     </head>
     <body onload="initMap()">
+        <h1>Carbon Calculator</h1>
         <div class="container">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="source Location" id="source">
@@ -44,8 +46,12 @@
                 <p>You refrain from producing <span id = "carbonSaved"> # </span> pounds of Carbon Dioxide.</p>
             </div>
         </div>
+        <div class = "container">
+            <button type ="logout-btn" id = "logout-btn">Sign Out</button>
+        </div>
         
-        
+        <script src = "app.js" type ="module"></script>
+        <script src = "login.js" type="module"></script>
     </body>
     
 </html>
