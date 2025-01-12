@@ -9,6 +9,7 @@ const password = document.getElementById("password");
 const signUpBtn = document.getElementById("signup-btn");
 
 const signUpButtonPressed = async (e) => {
+    console.log("Pressed!");
     e.preventDefault();
 
     try{
