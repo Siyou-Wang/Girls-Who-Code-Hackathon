@@ -17,27 +17,124 @@ function initMap() {
     );
 }
 
+let carRequest, bikeRequest, walkRequest
+
 function calcRoute(){
     var source = document.getElementById("source").value;
     var dest = document.getElementById("dest").value;
 
-    let request = {
+    carRequest = {
         origin:source,
         destination: dest,
         travelMode: 'DRIVING',
         unitSystem: google.maps.UnitSystem.IMPERIAL 
     }
-    directionsService.route(request, function(result,status){
+
+    bikeRequest = {
+        origin:source,
+        destination: dest,
+        travelMode: 'BICYCLING',
+        unitSystem: google.maps.UnitSystem.IMPERIAL 
+    }
+
+    walkRequest = {
+        origin:source,
+        destination: dest,
+        travelMode: 'WALKING',
+        unitSystem: google.maps.UnitSystem.IMPERIAL 
+    }
+
+    // directionsService.route(carRequest, function(result,status){
+    //     if(status=="OK"){
+    //         directionsRender.setDirections(result)
+    //         var totalDistance = 0
+    //         var totalTime = 0
+    //         var bestRoute = result.routes[0]
+    //         for(var i =0; i<bestRoute.legs.length; i++){
+    //             totalDistance += bestRoute.legs[i].distance.value;
+    //             totalTime += bestRoute.legs[i].duration.text;
+    //         }
+    //         document.getElementById("CarTime").innerHTML = totalTime
+    //     }
+    // })
+
+    //set times
+    var totalDistance = 0
+    directionsService.route(carRequest, function(result,status){
         if(status=="OK"){
-            directionsRender.setDirections(result)
-            var totalDistance = 0
+            totalDistance = 0
             var totalTime = 0
             var bestRoute = result.routes[0]
             for(var i =0; i<bestRoute.legs.length; i++){
                 totalDistance += bestRoute.legs[i].distance.value;
-                totalTime += bestRoute.legs[i].duration.value;
+                totalTime += bestRoute.legs[i].duration.text;
             }
-            document.getElementById("CarTime").
+            document.getElementById("CarTime").innerHTML = totalTime
+            console.log(totalDistance)
+
+            var gallonSave = totalDistance * 25.4
+            var carbonSave = totalDistance * 20
+
+            document.getElementById("gallonsSaved").innerHTML = gallonSave
+            document.getElementById("carbonSaved").innerHTML = carbonSave
+        }
+    })
+
+    directionsService.route(bikeRequest, function(result,status){
+        if(status=="OK"){
+            var totalTime = 0
+            var bestRoute = result.routes[0]
+            for(var i =0; i<bestRoute.legs.length; i++){
+                totalTime += bestRoute.legs[i].duration.text;
+            }
+            document.getElementById("BikeTime").innerHTML = totalTime
+        }
+    })
+
+    directionsService.route(walkRequest, function(result,status){
+        if(status=="OK"){
+            var totalTime = 0
+            var bestRoute = result.routes[0]
+            for(var i =0; i<bestRoute.legs.length; i++){
+                totalTime += bestRoute.legs[i].duration.text;
+            }
+            document.getElementById("WalkTime").innerHTML = totalTime
+        }
+    })
+
+    // console.log(totalDistance)
+
+    // var gallonSave = totalDistance * 25.4
+    // var carbonSave = totalDistance * 20
+
+    // document.getElementById("gallonsSaved").innerHTML = gallonSave
+    // document.getElementById("carbonSaved").innerHTML = carbonSave
+
+}
+
+function carRoute(){
+
+    directionsService.route(carRequest, function(result,status){
+        if(status=="OK"){
+            directionsRender.setDirections(result)
+        }
+    })
+}
+
+function bikeRoute(){
+
+    directionsService.route(bikeRequest, function(result,status){
+        if(status=="OK"){
+            directionsRender.setDirections(result)
+        }
+    })
+}
+
+function walkRoute(){
+
+    directionsService.route(walkRequest, function(result,status){
+        if(status=="OK"){
+            directionsRender.setDirections(result)
         }
     })
 }

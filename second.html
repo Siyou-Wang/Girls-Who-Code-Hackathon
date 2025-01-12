@@ -19,9 +19,29 @@
             </div>
             <button onclick="calcRoute()" class="btn btn-primary">Get</button>
             <div id="map" style="height: 50vh;"></div>
-            <div class = "container">
-                <h4>By car</h4>
-                <p>Time <span id ="CarTime"></span></p>
+            
+            <div class="container" style="flex-direction: row;">
+
+                <div class = "container">
+                    <button onclick="carRoute()" class="btn btn-primary">car</button>
+                    <h4>By car</h4>
+                    <p>Time : <span id ="CarTime"></span></p>
+                </div>
+
+                <div class = "container">
+                    <button onclick="bikeRoute()" class="btn btn-primary">bike</button>
+                    <h4>By bike</h4>
+                    <p>Time : <span id ="BikeTime"></span></p>
+                </div>
+
+                <div class = "container">
+                    <button onclick="walkRoute()" class="btn btn-primary">walking</button>
+                    <h4>By walkinh</h4>
+                    <p>Time : <span id ="WalkTime"></span></p>
+                </div>
+                
+                <p>You can save <span id = "gallonsSaved"> # </span> gallons of gas.</p>
+                <p>You refrain from producing <span id = "carbonSaved"> # </span> pounds of Carbon Dioxide.</p>
             </div>
         </div>
         
