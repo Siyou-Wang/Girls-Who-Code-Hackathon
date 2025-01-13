@@ -3,26 +3,40 @@
     margin: 5vh;
 }
 
-p{
-  color:aqua;  
-}
 
 h1{
   color: #001B2E;
   font-family: 'Monaco', Courier, monospace;
   text-align: center;
+  background-color: #6699CC;
 }
 
 h5{
   color: #FF8C42;
   text-align: center;
   font-family: 'Monaco', Courier, monospace;
+  font-size: large;
+}
+
+h4{
+  color:#001B2E;
+  text-align: center;
+  font-family: 'Monaco', Courier, monospace;
+  font-size: large;
+}
+
+h3{
+  color:#001B2E;
+  text-align: center;
+  font-family: 'Monaco', Courier, monospace;
+  font-size: large;
 }
 
 p{
   color: #294C60;
   text-align: center;
   font-family: 'Monaco', Courier, monospace;
+  font-size: large;
 }
 
 table{
@@ -39,8 +53,27 @@ td{
 button{
   align-self: center;
   text-align: center;
-  margin: auto; 
+  margin: auto;
+  color: white; 
+  background-color: #FF8C42;
+  width: 150px;
+  height: 50px;
+  border-width: 0px;
+  border-radius: 5px;
+  font-size: large;
+  margin-top: 20px;
 }
 div{
   text-align: center;
+}
+input{
+  width: 400px;
+  height: 50px;
+  margin-top: 20px;
+}
+
+label{
+  font-family: 'Monaco', Courier, monospace;
+  color: #294C60;
+  font-size: large;
 }
